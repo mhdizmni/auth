@@ -3,8 +3,8 @@ import './globals.css'
 import { Providers } from '@/app/providers'
 
 export const metadata: Metadata = {
-  title: 'mitism - Auth demo',
-  description: 'portfolio',
+  title: 'mitism - Auth Demo',
+  description: 'mitism portfolio',
 }
 
 export default function RootLayout({
