@@ -11,6 +11,7 @@ import { Social } from "./social";
 interface AuthCardProps {
     children: React.ReactNode,
     title?: string,
+    social?: boolean,
     backButtonText?: string,
     backButtonAction?: string,
     modal?: boolean,
@@ -19,6 +20,7 @@ interface AuthCardProps {
 export const AuthCard= ({
     children,
     title,
+    social,
     backButtonText,
     backButtonAction,
     modal,
