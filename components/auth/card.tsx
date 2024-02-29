@@ -1,11 +1,13 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import {
     Card,
     CardContent,
     CardFooter,
     CardHeader,
 } from "@/components/ui/card"
-import Image from "next/image";
-import Link from "next/link";
+
 import { Social } from "./social";
 
 interface AuthCardProps {
@@ -43,10 +45,15 @@ export const AuthCard= ({
                 </p>
             </CardHeader>
             <CardContent>
-                <p>form here</p>
+                {children}
             </CardContent>
-            <CardFooter className="w-full">
-                <Social />
+            <CardFooter className="w-full flex flex-col items-center justify-center gap-3">
+                {social && (
+                    <Social />
+                )}
+                <p className="text-muted-foreground text-sm">
+                    back button here
+                </p>
             </CardFooter>
         </Card>
     );
