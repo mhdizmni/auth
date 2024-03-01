@@ -22,19 +22,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
+        <header
+            className={`fixed top-0 h-5 bg-emerald-300 text-emerald-900 text-xs w-full flex items-center justify-center px-2 ${mono.className}`}
+        >
+            under developement...
+        </header>
         <Providers>
           {children}
         </Providers>
         <footer
-                className={`fixed bottom-0 h-5 bg-sky-700 text-white text-xs w-full flex items-center justify-between px-2 ${mono.className}`}
-            >
-                <div>
-                    © {new Date().getFullYear()} <Link href="https://mitism.com" target="_blank" className="underline">mitism.com</Link>
-                </div>
-                <div>
-                    Demo: Authentication using <Link href="https://authjs.dev/" target="_blank" className="underline italic">Auth.js</Link>
-                </div>
-            </footer>
+            className={`fixed bottom-0 h-5 bg-black text-white text-xs w-full flex items-center justify-between px-2 ${mono.className}`}
+        >
+            <div>
+                © {new Date().getFullYear()} <Link href="https://mitism.com" target="_blank" className="underline">mitism.com</Link>
+            </div>
+            <div>
+                Demo: Authentication using <Link href="https://authjs.dev/" target="_blank" className="underline italic">Auth.js</Link>
+            </div>
+        </footer>
       </body>
     </html>
   )
