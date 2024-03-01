@@ -26,7 +26,7 @@ export default function RootLayout({
                     © {new Date().getFullYear()} <Link href="https://mitism.com" target="_blank" className="underline">mitism.com</Link>
                 </div>
                 <div>
-                    Developed using <Link href="https://next-auth.js.org/" target="_blank" className="underline italic">NextAuth.js</Link>
+                    Developed using <Link href="https://authjs.dev/" target="_blank" className="underline italic">Auth.js</Link>
                 </div>
             </footer>
       </body>
