@@ -12,7 +12,7 @@ import { Social } from "./social";
 
 interface AuthCardProps {
     children: React.ReactNode,
-    title?: string,
+    headline?: string,
     social?: boolean,
     backButtonText?: string,
     backButtonAction?: string,
@@ -21,14 +21,10 @@ interface AuthCardProps {
 
 export const AuthCard= ({
     children,
-    title,
-    social,
-    backButtonText,
-    backButtonAction,
-    modal,
+    headline
 }: AuthCardProps) => {
     return (
-        <Card className="w-[300px] flex flex-col justify-center items-center">
+        <Card className="w-[360px] flex flex-col justify-center items-center rounded">
             <CardHeader className="flex flex-col justify-center items-center gap-1">
                 <Link
                     href="/"
@@ -41,20 +37,12 @@ export const AuthCard= ({
                     />
                 </Link>
                 <p className="text-muted-foreground text-sm">
-                    action title here
+                    {headline}
                 </p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4 w-full">
                 {children}
             </CardContent>
-            <CardFooter className="w-full flex flex-col items-center justify-center gap-3">
-                {social && (
-                    <Social />
-                )}
-                <p className="text-muted-foreground text-sm">
-                    back button here
-                </p>
-            </CardFooter>
         </Card>
     );
 }

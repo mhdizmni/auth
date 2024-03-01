@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { LoginSchema } from "@/schemas"
+import { RegisterSchema } from "@/schemas"
 
 import { AuthCard } from "./card"
 import { Social } from "./social";
@@ -19,22 +19,22 @@ import {
 import { Input } from "@nextui-org/react"
 import Link from "next/link";
 
-export const LoginForm = () => {
-    const form = useForm<z.infer<typeof LoginSchema>>({
-        resolver: zodResolver(LoginSchema),
+export const RegisterForm = () => {
+    const form = useForm<z.infer<typeof RegisterSchema>>({
+        resolver: zodResolver(RegisterSchema),
         defaultValues: {
             email: "",
             password: ""
         },
     });
 
-    const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
         console.log(values)
     }
 
     return (
         <AuthCard
-            headline="Sign in to mitism"
+            headline="Create a mitism account"
         >
             <Form
                 {...form}
@@ -43,6 +43,27 @@ export const LoginForm = () => {
                     className="space-y-2"
                     onSubmit={form.handleSubmit(onSubmit)}
                 >
+                    <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Input
+                                        label="Name"
+                                        // placeholder="matthew@mitism.com"
+                                        type="text"
+                                        classNames={{
+                                            inputWrapper: "rounded p-1 h-9",
+                                        }}
+                                        spellCheck={false}
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                     <FormField
                         control={form.control}
                         name="email"
@@ -86,17 +107,17 @@ export const LoginForm = () => {
                     />
                     <div className="flex justify-between items-center gap-4 !mt-5">
                         <Button variant="link" className="text-muted-foreground p-0" asChild>
-                            <Link href="/signup">
-                                Create an account
+                            <Link href="/signin">
+                                Log in
                             </Link>
                         </Button>
                         <Button className="rounded" type="submit">
-                            Sign in
+                            Sign up
                         </Button>
                     </div>
                 </form>
             </Form>
-            <Social />
+            <Social type="up" />
         </AuthCard>
     )
 }
