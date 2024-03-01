@@ -20,7 +20,7 @@ export const Social = ({
             </div>
             <div className="w-full flex flex-col items-center justify-between gap-1">
                 <Button variant="outline" className="w-full rounded">
-                    <FcGoogle size={25} />
+                    <FcGoogle size={25} /> Google
                 </Button>
                 <div className="w-full flex items-center justify-between gap-1">
                     <Button variant="outline" className="w-full rounded">
