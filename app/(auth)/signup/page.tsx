@@ -1,11 +1,9 @@
-'use client'
-
 import { RegisterForm } from '@/components/auth/register-form'
 
-export default function Home() {
+const SignupPage = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <RegisterForm />
-    </main>
-  )
+    <RegisterForm />
+  );
 }
+ 
+export default SignupPage;
