@@ -26,10 +26,10 @@ export const Social = ({
                     <Button variant="outline" className="w-full rounded">
                         <FaGithub size={25} />
                     </Button>
-                    <Button variant="outline" className="rounded" disabled>
+                    <Button variant="outline" className="w-full rounded" disabled>
                         <FaMicrosoft size={25} />
                     </Button>
-                    <Button variant="outline" className="rounded" disabled>
+                    <Button variant="outline" className="w-full rounded" disabled>
                         <FaApple size={25} />
                     </Button>
                 </div>
