@@ -1,9 +1,14 @@
 "use client";
 
+import { useTransition } from "react";
+
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { RegisterSchema } from "@/schemas"
+
+import Link from "next/link";
+import { register } from "@/actions/register";
 
 import { AuthCard } from "./card"
 import { Social } from "./social";
@@ -17,9 +22,11 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@nextui-org/react"
-import Link from "next/link";
+import { Spinner } from "@/components/spinner";
 
 export const RegisterForm = () => {
+    const [isPending, startTransition] = useTransition();
+
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
         defaultValues: {
@@ -30,7 +37,9 @@ export const RegisterForm = () => {
     });
 
     const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-        console.log(values)
+        startTransition(() => {
+            register(values)
+        })
     }
 
     return (
@@ -112,8 +121,14 @@ export const RegisterForm = () => {
                                 Log in
                             </Link>
                         </Button>
-                        <Button className="rounded" type="submit">
-                            Sign up
+                        <Button
+                            className="rounded min-w-12"
+                            type="submit"
+                            disabled={isPending}
+                        >
+                            {isPending
+                            ? <Spinner className="text-white h-4 w-4" />
+                            : "Sign in"}
                         </Button>
                     </div>
                 </form>

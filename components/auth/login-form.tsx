@@ -1,9 +1,14 @@
 "use client";
 
+import { useTransition } from "react";
+
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { LoginSchema } from "@/schemas"
+
+import Link from "next/link";
+import { login } from "@/actions/login";
 
 import { AuthCard } from "./card"
 import { Social } from "./social";
@@ -17,9 +22,11 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@nextui-org/react"
-import Link from "next/link";
+import { Spinner } from "@/components/spinner";
 
 export const LoginForm = () => {
+    const [isPending, startTransition] = useTransition();
+
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
@@ -29,7 +36,9 @@ export const LoginForm = () => {
     });
 
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-        console.log(values)
+        startTransition(() => {
+            login(values)
+        })
     }
 
     return (
@@ -90,8 +99,14 @@ export const LoginForm = () => {
                                 Create an account
                             </Link>
                         </Button>
-                        <Button className="rounded" type="submit">
-                            Sign in
+                        <Button
+                            className="rounded min-w-12"
+                            type="submit"
+                            disabled={isPending}
+                        >
+                            {isPending
+                            ? <Spinner className="text-white h-4 w-4" />
+                            : "Sign in"}
                         </Button>
                     </div>
                 </form>
