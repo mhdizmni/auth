@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -23,9 +23,13 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@nextui-org/react"
 import { Spinner } from "@/components/spinner";
+import { ErrorNote } from "../error-note";
+import { toast } from "sonner";
+import { Toast } from "../toast";
 
 export const RegisterForm = () => {
     const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string>()
 
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
@@ -37,8 +41,17 @@ export const RegisterForm = () => {
     });
 
     const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+        setError(undefined);
         startTransition(() => {
             register(values)
+            .then((data): void => {
+                if (data.error) setError(data.error);
+                if (data.success) toast.custom((t) => (
+                    <Toast message={data.success} type="success" onClick={() => toast.dismiss(t)} />
+                ), {
+                    duration: 10000000
+                })
+            })
         })
     }
 
@@ -53,6 +66,7 @@ export const RegisterForm = () => {
                     className="space-y-2"
                     onSubmit={form.handleSubmit(onSubmit)}
                 >
+                    <ErrorNote message={error} />
                     <FormField
                         control={form.control}
                         name="name"
