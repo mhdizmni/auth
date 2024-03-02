@@ -49,7 +49,7 @@ export const RegisterForm = () => {
                 if (data.success) toast.custom((t) => (
                     <Toast message={data.success} type="success" onClick={() => toast.dismiss(t)} />
                 ), {
-                    duration: 10000000
+                    duration: 5000
                 })
             })
         })
