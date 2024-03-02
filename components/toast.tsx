@@ -14,8 +14,8 @@ export const Toast = ({
 }: ToastProps) => {
     return (
         <div className={cn(
-            "p-3 relative rounded flex items-center gap-x-2 text-sm border text-ye",
-            {"text-destructive border-destructive bg-destructive/15": type === "error"},
+            "p-3 relative rounded flex items-center gap-x-2 text-sm border bg-destructive-foreground",
+            {"text-destructive border-destructive": type === "error"},
             {"text-emerald-900 border-emerald-900 bg-emerald-200": type === "success"},
             {"text-yellow-900 border-yellow-900 bg-yellow-200": type === "info"},
         )}>
@@ -26,7 +26,7 @@ export const Toast = ({
             {onClick && 
                 <Button
                     onClick={onClick}
-                    className="absolute top-0 right-0 p-1 h-auto"
+                    className="absolute top-0 right-0 p-1 h-auto m-1"
                     variant="ghost"
                 >
                     <Cross2Icon className="h-4 w-4"/>

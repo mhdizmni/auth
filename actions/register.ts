@@ -21,7 +21,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 
     if (uniqueEmail) {
         return {
-            error: "user alreadu exists"
+            error: "This email is already taken and in use."
         }
     }
 

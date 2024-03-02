@@ -32,7 +32,7 @@ export default function RootLayout({
           {children}
         </Providers>
         <footer
-            className={`fixed bottom-0 h-5 bg-black text-white text-xs w-full flex items-center justify-between px-2 ${mono.className}`}
+            className={`fixed bottom-0 min-h-5 bg-black text-white text-xs w-full flex items-center justify-between px-2 ${mono.className}`}
         >
             <div>
                 © {new Date().getFullYear()} <Link href="https://mitism.com" target="_blank" className="underline">mitism.com</Link>
