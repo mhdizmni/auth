@@ -3,6 +3,7 @@ import './globals.css'
 import { Providers } from '@/app/providers'
 import Link from 'next/link'
 import { IBM_Plex_Mono } from 'next/font/google'
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: 'mitism - Auth Demo',
@@ -40,6 +41,7 @@ export default function RootLayout({
                 Demo: Authentication using <Link href="https://authjs.dev/" target="_blank" className="underline italic">Auth.js</Link>
             </div>
         </footer>
+        <Toaster />
       </body>
     </html>
   )
